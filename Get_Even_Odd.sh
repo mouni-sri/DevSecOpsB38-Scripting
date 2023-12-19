@@ -1,4 +1,5 @@
 #! /bin/bash
+for I in {1..5}; do
 read -p "enter number:" NUM
 echo $NUM
 if [ $(expr $NUM % 2) -eq 0 ]
@@ -7,3 +8,4 @@ then
 else
     echo "$NUM is Odd"
 fi
+done
