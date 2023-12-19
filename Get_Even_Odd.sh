@@ -6,5 +6,4 @@ then
     echo "$NUM is Even"
 else
     echo "$NUM is Odd"
-done
 fi
