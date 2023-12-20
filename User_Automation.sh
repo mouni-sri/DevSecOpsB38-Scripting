@@ -9,4 +9,11 @@ if [ $# -gt 0 ]; then
     fi
 else
     echo "PLease provide valid arguments."
+    sudo useradd -m ${USERNAME} --shell /bin/bash
+    sudo usermod -aG sudo ${USERNAME}
+    echo '${USERNAME} ALL=(ALL) NOPASSWD: ALL' >>/etc/sudoers
+    SPEC=$(echo '!@#$%^&*()_' | fold -w1 | shuf | head -1)
+    PASSWORD="India@${RANDOM}${SPEC}"
+    echo "${USERNAME}:${PASSWORD}" | sudo chpasswd
+    passwd -e ${USERNAME}
 fi
