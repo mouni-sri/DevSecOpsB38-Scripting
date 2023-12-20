@@ -13,6 +13,7 @@ if [ $# -gt 0 ]; then
         PASSWORD="India@${RANDOM}${SPEC}"
         echo "${USERNAME}:${PASSWORD}" | sudo chpasswd
         passwd -e ${USERNAME}
+        echo "the temporary credentials are ${USERNAME} and $PASSWORD"
     fi
 else
     echo "PLease provide valid arguments."
