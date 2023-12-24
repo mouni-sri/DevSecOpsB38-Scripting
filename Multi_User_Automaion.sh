@@ -1,4 +1,5 @@
 #! /bin/bash
+SLACK_WEB="https://hooks.slack.com/services/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"
 if [ $# -gt 0 ]; then
     for USERNAME in $@;
     do
@@ -14,7 +15,8 @@ if [ $# -gt 0 ]; then
         PASSWORD="India@${RANDOM}${SPEC}"
         echo "${USERNAME}:${PASSWORD}" | sudo chpasswd
         passwd -e ${USERNAME}
-        echo "the temporary credentials are ${USERNAME} and $PASSWORD"
+        #echo "the temporary credentials are ${USERNAME} and $PASSWORD"
+        curl -X POST -H 'Content-type: application/json' --data '{"text":'$USERNAME ------ $PASSWORD'}' $SLACK_WEB
     fi
     done
 else
