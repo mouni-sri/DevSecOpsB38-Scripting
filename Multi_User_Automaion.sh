@@ -1,5 +1,5 @@
 #! /bin/bash
-SLACK_WEB="https://hooks.slack.com/services/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"
+SLACK_WEB="https://hooks.slack.com/services/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"
 if [ $# -gt 0 ]; then
     for USERNAME in $@;
     do
@@ -14,9 +14,12 @@ if [ $# -gt 0 ]; then
         SPEC=$(echo '!@#$%^&*()_' | fold -w1 | shuf | head -1)
         PASSWORD="India@${RANDOM}${SPEC}"
         echo "${USERNAME}:${PASSWORD}" | sudo chpasswd
-        passwd -e ${USERNAME}
+        passwd -e ${USERNAME} >> /etc/null
         #echo "the temporary credentials are ${USERNAME} and $PASSWORD"
-        curl -X POST -H 'Content-type: application/json' --data '{"text":'$USERNAME ------ $PASSWORD'}' $SLACK_WEB
+        curl -X POST $SLACK_WEB -sL -H 'Content-type: application/json' --data "{"text":\"The Username is\"}" >> /etc/null
+        curl -X POST $SLACK_WEB -sL -H 'Content-type: application/json' --data "{"text":\"${USERNAME}\"}" >> /etc/null
+        curl -X POST $SLACK_WEB -sL -H 'Content-type: application/json' --data "{"text":\"The Password is\"}" >> /etc/null
+        curl -X POST $SLACK_WEB -sL -H 'Content-type: application/json' --data "{"text":\"${PASSWORD}\"}" >> /etc/null
     fi
     done
 else
