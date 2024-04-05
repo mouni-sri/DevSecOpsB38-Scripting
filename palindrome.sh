@@ -1,6 +1,6 @@
 #!/bin/bash
 STRING=$1
-STR_LEN=$(expr ${#STRING} -1)
+STR_LEN=$(expr ${#STRING} - 1)
 STR_REV=''
 echo $STR_LEN
 for ((i = $STR_LEN; i >= 0; i--)); do
