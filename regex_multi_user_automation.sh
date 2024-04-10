@@ -26,5 +26,7 @@ if [ $# -gt 0 ]; then
         fi
         done
 else
-    echo "PLease provide valid arguments."
+    echo "PLease provide valid arguments. "
 fi
+
+
