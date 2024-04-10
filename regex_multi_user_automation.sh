@@ -24,6 +24,7 @@ if [ $# -gt 0 ]; then
     fi
     else
         echo "username must contain alphabets..."
+    fi
     done
 else
     echo "PLease provide valid arguments."
